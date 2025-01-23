@@ -34,7 +34,3 @@
 - `chat/views.py`: View functions for handling HTTP requests
 - `chat/static/`: Static files including JavaScript for form validation
 - `chat/templates/`: HTML templates for the application
-
-## License
-
-This project is licensed under the MIT License.
