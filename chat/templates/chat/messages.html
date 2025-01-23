@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with {{ user.username }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'chat/styles.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery for AJAX -->
+</head>
+<body>
+    <header>
+        <h1>Chat with {{ user.username }}</h1>
+        <nav>
+            <a href="{% url 'chatroom' %}">Back to Chatroom</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="messages-area">
+            {% for message in messages %}
+                <div class="message {% if message.sender == request.user %}sent{% else %}received{% endif %}">
+                    <p><strong>{{ message.sender.username }}:</strong> {{ message.text }}</p>
+                    <span class="timestamp">{{ message.timestamp }}</span>
+                </div>
+            {% empty %}
+                <p>No messages yet. Start the conversation!</p>
+            {% endfor %}
+        </div>
+
+        <form id="message-form" method="post" action="">
+            {% csrf_token %}
+            <textarea name="message" rows="3" placeholder="Type your message here..." required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#message-form").on('submit', function(e) {
+                e.preventDefault();
+
+                var message = $("textarea[name='message']").val();
+                if (message.trim() !== "") {
+                    $.ajax({
+                        type: "POST",
+                        url: window.location.href,  
+                        data: {
+                            'message': message,
+                            'csrfmiddlewaretoken': $("input[name='csrfmiddlewaretoken']").val(),
+                        },
+                        success: function(response) {
+                            var newMessage = `
+                                <div class="message sent">
+                                    <p><strong>${response.sender}:</strong> ${response.text}</p>
+                                    <span class="timestamp">${response.timestamp}</span>
+                                </div>
+                            `;
+                            $(".messages-area").append(newMessage);
+                            $("textarea[name='message']").val(""); 
+                        },
+                        error: function() {
+                            alert("An error occurred while sending your message.");
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

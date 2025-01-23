@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatroom</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; 
+        }
+
+        header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .left-menu {
+            width: 250px;
+            background: #4e4e9f; 
+            padding: 10px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .collapse-btn {
+            background-color: #6a11cb; 
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .collapse-btn:hover {
+            background-color: #2575fc; 
+        }
+
+        .user-list {
+            list-style-type: none;
+            padding: 0;
+            display: block;
+        }
+
+        .user-list li {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .user-list li a {
+            text-decoration: none;
+            color: #ffffff; 
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .user-list li a:hover {
+            color: #f1f1f1; 
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff; 
+            overflow-y: auto;
+        }
+
+        .description {
+            margin-bottom: 30px;
+            color: #333; 
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .description h2 {
+            color: #2575fc; 
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .description p {
+            font-size: 1.1rem;
+            color: #555; 
+        }
+
+        .chat-area {
+            height: calc(100vh - 200px); 
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #f9f9f9; 
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        #user-menu {
+            display: none;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left-menu {
+                width: 100%;
+                order: -1; /* Moves the menu to the top on mobile */
+            }
+
+            .main-content {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Welcome to the Chatroom!
+    </header>
+
+    <div class="container">
+        <!-- Collapsible Left Menu -->
+        <div class="left-menu">
+            <button class="collapse-btn" onclick="toggleMenu()">☰ Users</button>
+            <ul class="user-list" id="user-menu">
+                {% for user in users %}
+                    <li>
+                        <a href="{% url 'messages' user.id %}">{{ user.username }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Description Section -->
+            <section class="description">
+                <h2>About the Chatroom</h2>
+                <p>Welcome to our real-time chatroom, designed to make online communication fast, efficient, and interactive! Here, you can chat with your friends, join exciting conversations, and share meaningful messages instantly. Whether you're discussing hobbies, work, or just having a casual chat, this space is perfect for engaging with people from all over the world!</p>
+
+                <h2>Key Features</h2>
+                <p>
+                    - <strong>Real-Time Messaging:</strong> Engage in live conversations with other users instantly.<br>
+                    
+                    
+                    - <strong>Fully Responsive:</strong> Whether you're on a desktop or mobile device, our chatroom adapts to your screen size.
+                </p>
+
+                <h2>Why Choose Our Chatroom?</h2>
+                <p>Our chatroom provides a smooth, user-friendly experience with a clean design. With a focus on real-time communication, you can expect seamless interaction without any delays. It’s ideal for casual chats, brainstorming sessions, and even work-related discussions.</p>
+            </section>
+
+            <!-- Chat Area -->
+            <div class="chat-area">
+                <h2>Select a user to start chatting!</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Collapsible Menu -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('user-menu');
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
