@@ -6,7 +6,7 @@
 }
 
 body {
-    background: linear-gradient(to right, #6a11cb, #2575fc); /* Smooth gradient background */
+    background: linear-gradient(to right, #6a11cb, #2575fc); 
     color: #333;
     line-height: 1.6;
     font-size: 16px;
@@ -20,12 +20,12 @@ a {
 
 /* Header Styles */
 header {
-    background: #6a11cb; /* Vibrant header color */
+    background: #6a11cb; 
     color: white;
     padding: 20px 0;
     text-align: center;
     border-bottom: 5px solid #2575fc;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
 }
 
 header h1 {
@@ -36,19 +36,19 @@ header h1 {
 
 /* Container for Forms (Signup/Login) */
 .container {
-    max-width: 500px; /* Medium size for signup/login */
+    max-width: 500px; 
     margin: 50px auto;
     padding: 30px;
     background-color: #fff;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
 }
 
 /* Form Input Styles */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: 95%; /* Medium size relative to container */
+    width: 95%; 
     padding: 12px;
     font-size: 1rem;
     margin: 15px auto;
@@ -68,7 +68,7 @@ input[type="password"]:focus {
 
 /* Button Styles */
 button {
-    width: 95%; /* Button matches input width */
+    width: 95%; 
     padding: 12px;
     background: #6a11cb;
     color: white;
@@ -92,10 +92,10 @@ button:hover {
     color: white;
     border: none;
     width: 100%;
-    padding: 15px; /* Increased size for better visibility */
+    padding: 15px; 
     text-align: left;
     cursor: pointer;
-    font-size: 1.1rem; /* Larger text */
+    font-size: 1.1rem; 
 }
 
 .collapse-btn:hover {
@@ -104,7 +104,7 @@ button:hover {
 
 /* Chat Area */
 .chat-area {
-    flex-grow: 1; /* Takes the remaining space beside the left menu */
+    flex-grow: 1; 
     padding: 20px;
     background-color: #f9f9f9;
     overflow-y: auto;
@@ -139,7 +139,7 @@ button:hover {
 
 .chat-container {
     max-width: 800px; 
-    height: 100vh; /* Full viewport height */
+    height: 100vh; 
     margin: 0 auto; 
     background-color: #ffffff;
     border-radius: 15px;
@@ -153,9 +153,9 @@ button:hover {
     background-color: #f1f1f1;
     border-right: 1px solid #ccc;
     overflow-y: auto;
-    height: 100%; /* Ensure it spans the entire height of the chatroom */
+    height: 100%; 
     display: flex;
-    flex-direction: column; /* Stack items vertically */
+    flex-direction: column;
 }
 /* Chat Selection Button */
 .select-chat-btn {
@@ -178,7 +178,7 @@ button:hover {
 .user-list {
     list-style-type: none;
     padding: 0;
-    flex-grow: 1; /* Ensures the list takes the remaining space */
+    flex-grow: 1;
 }
 
 .user-list li {
@@ -198,7 +198,7 @@ button:hover {
 
 /* Chat Area */
 .chat-area {
-    flex-grow: 1; /* Takes the remaining space beside the left menu */
+    flex-grow: 1; 
     padding: 20px;
     background-color: #f9f9f9;
     overflow-y: auto;
