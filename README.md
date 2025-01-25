@@ -27,6 +27,8 @@
 9. Select a user from the chat room to start messaging
 10. Send and receive messages in real-time
 
+11. The link for the application : https://anushkakk002.pythonanywhere.com/signup/
+
 ## Project Structure
 
 - `chat/models.py`: Contains Message model for storing chat messages
